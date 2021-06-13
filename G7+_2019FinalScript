@@ -1,0 +1,80 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+%matplotlib
+
+#import csv, check output
+data = pd.read_csv('MATPLOTLIB Practice\G7+2_2019.csv', 
+                   index_col=0,
+                   dtype={'POPULATION': int, 
+                          'GDP': np.float64, 
+                          'GDP PER CAPITA': int, 
+                          'GDP GROWTH RATE': np.float64, 
+                          'MILITARY EXPENDITURE PER GDP': np.float64, 
+                          'Est MIL EXPENDITURE': np.int64},
+                  )
+#test data output
+data
+
+#assigning subplot data to variable
+POP = data['POPULATION']
+GDP = data['GDP']
+GDP_per_capt = data['GDP PER CAPITA']
+GDP_GROWTH = data['GDP GROWTH RATE']
+MIL_EXP_PER_GDP = data['MILITARY EXPENDITURE PER GDP']
+MIL_EXP = data['Est MIL EXPENDITURE']
+
+#x&ylabel properties for each plot
+GDP_prop = {'xlabel': '', 'ylabel': 'Tens of Trillions'}
+GDP_pcap_prop ={'xlabel': '', 'ylabel': ''}
+GDP_growth_prop = {'xlabel': '', 'ylabel': '% of GDP', 'yticks': [0, 1, 2, 3, 4, 5, 6, 7]}
+pop_prop = {'xlabel': '', 'ylabel': 'Billions of people'}
+mil_exp_pgdp_prop = {'xlabel': '', 'ylabel': '% of GDP'}
+mil_expenditure_prop ={'xlabel': '', 'ylabel': '100s of Billions', 'yticks': [0, 300, 600, 900]}
+
+#Create figure, axes, & subplots.
+#initiate figure
+fig = plt.figure()
+
+#impose plot title
+plt.suptitle('G7+2 2019 Data in 2010 dollars',fontsize=15, fontweight='bold')
+
+#initiate subplots
+ax1 = fig.add_subplot(2, 3, 1, title='Real GDP')
+ax2 = fig.add_subplot(2, 3, 2, title='GDP Per Capita')
+ax3 = fig.add_subplot(2, 3, 3, title='GPD Growth Rate')
+ax4 = fig.add_subplot(2, 3, 4, title='Population')
+ax5 = fig.add_subplot(2, 3, 5, title='Est Military Expenditure')
+ax6 = fig.add_subplot(2, 3, 6, title='Military Exp Per GDP')
+
+#assign data to subplots
+GDP.plot.bar(ax=ax1, color='#2e856e')
+GDP_per_capt.plot.bar(ax=ax2, color='#2e856e')
+GDP_GROWTH.plot.bar(ax=ax3, color='#2e856e')
+POP.plot.bar(ax=ax4)
+MIL_EXP.plot.bar(ax=ax5, color='#f2003c')
+MIL_EXP_PER_GDP.plot.bar(ax=ax6, color='#f2003c')
+
+                
+    
+#refine ticks & labels    
+ax1.set(**GDP_prop)
+ax1.tick_params(axis='x', rotation=60, labelsize=6)
+ax2.set(**GDP_pcap_prop)
+ax2.tick_params(axis='x', rotation=60, labelsize=6)
+ax3.set(**GDP_growth_prop)
+ax3.tick_params(axis='x', rotation=60, labelsize=6)
+ax4.set(**pop_prop)
+ax4.tick_params(axis='x', rotation=60, labelsize=6)
+ax5.set(**mil_expenditure_prop)
+ax5.tick_params(axis='x', rotation=60, labelsize=6)
+ax6.set(**mil_exp_pgdp_prop)
+ax6.tick_params(axis='x', rotation=60, labelsize=6)
+
+#tighten subplot layoot
+fig.tight_layout(h_pad=2)
+
+#include citation at bottom of plot
+txt ='Central Intelligence Agency. cia.gov. Central Intelligence Agency, n.d. Web. 13 June. 2021.'
+fig.text(0, 0, txt, va='bottom', ha='left', fontsize=5, fontstyle='italic')
