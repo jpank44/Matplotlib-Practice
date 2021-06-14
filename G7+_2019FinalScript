@@ -26,7 +26,7 @@ MIL_EXP_PER_GDP = data['MILITARY EXPENDITURE PER GDP']
 MIL_EXP = data['Est MIL EXPENDITURE']
 
 #x&ylabel properties for each plot
-GDP_prop = {'xlabel': '', 'ylabel': 'Tens of Trillions'}
+GDP_prop = {'xlabel': '', 'ylabel': 'Trillions'}
 GDP_pcap_prop ={'xlabel': '', 'ylabel': ''}
 GDP_growth_prop = {'xlabel': '', 'ylabel': '% of GDP', 'yticks': [0, 1, 2, 3, 4, 5, 6, 7]}
 pop_prop = {'xlabel': '', 'ylabel': 'Billions of people'}
@@ -60,17 +60,17 @@ MIL_EXP_PER_GDP.plot.bar(ax=ax6, color='#f2003c')
     
 #refine ticks & labels    
 ax1.set(**GDP_prop)
-ax1.tick_params(axis='x', rotation=60, labelsize=6)
+ax1.tick_params(axis='x', rotation=60, labelsize=20)
 ax2.set(**GDP_pcap_prop)
-ax2.tick_params(axis='x', rotation=60, labelsize=6)
+ax2.tick_params(axis='x', rotation=60, labelsize=20)
 ax3.set(**GDP_growth_prop)
-ax3.tick_params(axis='x', rotation=60, labelsize=6)
+ax3.tick_params(axis='x', rotation=60, labelsize=20)
 ax4.set(**pop_prop)
-ax4.tick_params(axis='x', rotation=60, labelsize=6)
+ax4.tick_params(axis='x', rotation=60, labelsize=20)
 ax5.set(**mil_expenditure_prop)
-ax5.tick_params(axis='x', rotation=60, labelsize=6)
+ax5.tick_params(axis='x', rotation=60, labelsize=20)
 ax6.set(**mil_exp_pgdp_prop)
-ax6.tick_params(axis='x', rotation=60, labelsize=6)
+ax6.tick_params(axis='x', rotation=60, labelsize=20)
 
 #tighten subplot layoot
 fig.tight_layout(h_pad=2)
